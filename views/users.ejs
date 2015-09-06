@@ -1,0 +1,156 @@
+<!-- views/users.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include partials/head %>
+</head>
+<body ng-app='angularApp'>
+<div class="container" ng-controller="UserController">
+	    <div class="page-header text-center">
+	        <h1><span class="glyphicon glyphicon-eye-open"></span> Admin Panel</h1>
+	    </div>
+	    <% include partials/navigation %>
+	    <div>
+	    	<ul class="nav nav-tabs">
+			  	<li role="presentation" class="active"><a ng-click="showUserView()">Users</a></li>
+			  	<li role="presentation"><a href="#" ng-click="showUserRegister()">Register</a></li>
+
+			</ul>
+	    </div>
+		<div ng-show="showUsers">
+			<h2>Available users</h2>
+			<table class="table table-hover">
+				<thead>
+			        <tr>
+			            <th>Name</th>
+			            <th>Surname</th>
+			            <th>Username</th>
+			            <th>Password</th>
+			            <th>Afm</th>
+			            <th>Am</th>
+			            <th>Phone</th>
+			            <th>Address</th>
+			            <th>Email</th>
+			            <th>Admin</th>
+			        </tr>
+	    		</thead>
+				<tr ng-repeat="(key,value) in users">
+					<td>{{value.local.firstname}}</td>
+					<td>{{value.local.surname}}</td>
+					<td>{{value.local.username}}</td>
+					<td>{{value.local.password}}</td>
+					<td>{{value.local.afm}}</td>
+					<td>{{value.local.am}}</td>
+					<td>{{value.local.phone}}</td>
+					<td>{{value.local.address}}</td>
+					<td>{{value.local.email}}</td>
+					<td>{{value.local.admin}}</td>
+				</tr>
+			</table>
+		</div>
+		<div ng-show="showRegister">
+			<h2>User Registration</h2>
+			<form class="form-horizontal">
+			<fieldset>
+
+			<!-- Form Name -->
+			<legend>Register a new user</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="name">Name</label>  
+			  <div class="col-md-4">
+			  <input ng-model="user.firstname" id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+			    
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="surname">Surname</label>  
+			  <div class="col-md-4">
+			  <input ng-model="user.surname" id="surname" name="surname" type="text" placeholder="Surname" class="form-control input-md">
+			    
+			  </div>
+			</div>
+
+			<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="username">Username</label>
+			  <div class="col-md-4">                     
+			    <input type="text" ng-model="user.username" class="form-control" id="username" name="username" placeholder="Useraname"/>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="password">Password</label>
+			  <div class="col-md-4">
+			    <input type="password" name="password" placeholder="Password" ng-model="user.password" id="password" class="form-control"/>
+			  </div>
+			</div>
+
+			<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="afm">Afm</label>
+			  <div class="col-md-4">                     
+			    <input type="number" ng-model="user.afm" class="form-control" id="afm" name="afm" placeholder="Afm"/>
+			  </div>
+			</div>
+
+			<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="am">Am</label>
+			  <div class="col-md-4">                     
+			    <input type="number" ng-model="user.am" class="form-control" id="am" name="am" placeholder="Am"/>
+			  </div>
+			</div>
+
+					<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="phone">Phone</label>
+			  <div class="col-md-4">                     
+			    <input type="number" ng-model="user.phone" class="form-control" id="phone" name="phone" placeholder="Phone"/>
+			  </div>
+			</div>
+
+					<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="address">Address</label>
+			  <div class="col-md-4">                     
+			    <input type="text" ng-model="user.address" class="form-control" id="address" name="address" placeholder="Address"/>
+			  </div>
+			</div>
+
+					<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="email">Email</label>
+			  <div class="col-md-4">                     
+			    <input type="email" ng-model="user.email" class="form-control" id="email" name="email" placeholder="Email"/>
+			  </div>
+			</div>
+
+					<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="admin">Admin</label>
+			  <div class="col-md-4">                     
+			    <input type="checkbox" ng-model="user.admin" class="form-control" id="admin" name="admin" placeholder="Admin"/>
+			  </div>
+			</div>
+
+			<!-- Button (Double) -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="register"></label>
+			  <div class="col-md-8">
+			    <button id="register" name="register" class="btn btn-success" ng-click="registerUser()">Register</button>
+			    <button id="cancel" name="cancel" class="btn btn-danger" ng-click="showUserView()">Cancel</button>
+			  </div>
+			</div>
+
+			</fieldset>
+			</form>
+		</div>
+
+	<% include partials/footer %>
+</body>
+</html>

@@ -1,0 +1,41 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Poiret+One|Indie+Flower|Lobster|Josefin+Sans|Pacifico|Handlee|Fauna+One&subset=latin,greek,greek-ext);
+
+body{
+	padding : 10px;
+	margin-top: 40px;
+	margin-bottom: 50px;
+
+
+}
+
+.jumbotron{
+	font-family: 'Open Sans', sans-serif;
+	background: #FF5722;
+	color : white;
+}
+.jumbotron p{
+	font-family: 'Pacifico', cursive;
+
+}
+
+.container a span {
+	margin-right: 6px;
+}
+
+article{
+	padding: 12px;
+}
+
+.footer{
+	padding: 12px;
+	height : 40px;
+	background: #607D8B;
+	color: white;
+	font-family: 'Lobster', cursive;
+	font-size: 17px;
+}
+.footer a {
+	color : white !important;
+}
+
+

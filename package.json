@@ -1,0 +1,27 @@
+{
+  "name": "nodepos",
+  "version": "1.0.0",
+  "description": "A simple , yet powerfull nodejs based POS for bars and restaurants",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bampis Sykovaridis",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "bower": "^1.5.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.5",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "method-override": "^2.3.5",
+    "mongoo": "^0.3.5",
+    "mongoose": "^4.1.4",
+    "morgan": "^1.6.1",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0"
+  }
+}

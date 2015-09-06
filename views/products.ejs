@@ -1,0 +1,101 @@
+<!-- views/admin.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include partials/head %>
+</head>
+<body ng-app='angularApp'>
+<div class="container" ng-controller="ProductController">
+	    <div class="page-header text-center">
+	        <h1><span class="glyphicon glyphicon-eye-open"></span> Admin Panel</h1>
+	    </div>
+	    <% include partials/navigation %>
+	    <div>
+	    	<ul class="nav nav-tabs">
+			  	<li role="presentation" class="active"><a ng-click="showProductView()">Products</a></li>
+			  	<li role="presentation"><a href="#" ng-click="showProductRegister()">Register</a></li>
+
+			</ul>
+	    </div>
+		<div ng-show="showProducts">
+			<h2>Available products</h2>
+			<table class="table table-hover">
+				<thead>
+			        <tr>
+			            <th>Name</th>
+			            <th>Description</th>
+			            <th>Price</th>
+			            <th>Category</th>
+			            <th>Ingredients</th>
+			        </tr>
+	    		</thead>
+				<tr ng-repeat="(key,value) in products">
+					<td>{{value.name}}</td>
+					<td>{{value.description}}</td>
+					<td>{{value.price}}</td>
+					<td>{{value.category}}</td>
+					<td>{{value.ingredients}}</td>
+				</tr>
+			</table>
+		</div>
+		<div ng-show="showRegister">
+			<h2>Product Registration</h2>
+			<form class="form-horizontal">
+			<fieldset>
+
+			<!-- Form Name -->
+			<legend>Register a product</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="name">Name</label>  
+			  <div class="col-md-4">
+			  <input ng-model="product.name" id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+			    
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="description">Description</label>  
+			  <div class="col-md-4">
+			  <input ng-model="product.description" id="description" name="description" type="text" placeholder="Description" class="form-control input-md">
+			    
+			  </div>
+			</div>
+
+			<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="ingredients">Ingredients</label>
+			  <div class="col-md-4">                     
+			    <textarea ng-model="product.ingredients" class="form-control" id="ingredients" name="ingredients">default text</textarea>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="category">Category</label>
+			  <div class="col-md-4">
+			    <select ng-model="product.category" id="category" name="category" class="form-control">
+			      <option value="1">Option one</option>
+			      <option value="2">Option two</option>
+			    </select>
+			  </div>
+			</div>
+
+			<!-- Button (Double) -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="register"></label>
+			  <div class="col-md-8">
+			    <button id="register" name="register" class="btn btn-success" ng-click="registerProduct()">Register</button>
+			    <button id="cancel" name="cancel" class="btn btn-danger" ng-click="showProductView()">Cancel</button>
+			  </div>
+			</div>
+
+			</fieldset>
+			</form>
+		</div>
+
+	<% include partials/footer %>
+</body>
+</html>

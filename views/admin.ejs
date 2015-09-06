@@ -1,0 +1,48 @@
+<!-- views/admin.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include partials/head %>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="glyphicon glyphicon-eye-open"></span> Admin Panel</h1>
+    </div>
+    <% include partials/navigation %>
+        <div class="col-sm-3">
+            <div class="well">
+                <h3><span class="glyphicon glyphicon-off"></span>POS controll</h3>
+                     <button type="button" class="btn btn-info">Start</button>
+                     <button type="button" class="btn btn-danger">Stop</button>
+            </div>
+            <div class="well">
+                <h3><span class="glyphicon glyphicon-globe"></span>Waiters Connected</h3>
+                    <ul class='list-group'>
+                        <li class="list-group-item"><button class="btn btn-primary" type="button">
+                          Bampis <span class="badge">4</span>
+                        </button></li>
+                        <li class="list-group-item"><button class="btn btn-primary" type="button">
+                          Xrysa <span class="badge">4</span>
+                        </button></li>
+                        <li class="list-group-item"><button class="btn btn-primary" type="button">
+                          Tasos <span class="badge">4</span>
+                        </button></li>
+                    </ul>
+            </div>
+            <div class="well">
+                <h3><span class="glyphicon glyphicon-piggy-bank"></span>Todays Statistics</h3>
+                    <div class="alert alert-success" role="alert"><h4>Total orders</h4>119</div>
+                    <div class="alert alert-info" role="alert"><h4>Earnings</h4>5345</div>
+                    <div class="alert alert-warning" role="alert"><h4>Products return</h4>22</div>
+                    <div class="alert alert-warning" role="alert"><h4>Employee Consumed</h4>22</div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta velit consequuntur temporibus hic, quod veritatis eius, quas neque aliquam eos animi perspiciatis voluptatem recusandae error, debitis ea quia nulla.
+        </div>
+</div>
+<% include partials/footer %>
+</body>
+</html>
