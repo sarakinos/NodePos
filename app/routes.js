@@ -10,6 +10,9 @@ module.exports = function(app, passport) {
     app.get('/users',isLoggedIn,function(req,res){
         res.render('users.ejs');
     });
+    app.get('/categories',isLoggedIn,function(req,res){
+        res.render('categories.ejs');
+    });
     app.get('/products',isLoggedIn,function(req,res){
         res.render('products.ejs');
     });

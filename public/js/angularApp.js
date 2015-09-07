@@ -1,1 +1,1 @@
-var angularApp = angular.module('angularApp',['ngRoute','productController','userController']);
+var angularApp = angular.module('angularApp',['ngRoute','productController','userController','categoryController']);

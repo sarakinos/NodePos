@@ -1,0 +1,79 @@
+<!-- views/categories.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include partials/head %>
+</head>
+<body ng-app='angularApp'>
+<div class="container" ng-controller="CategoryController">
+	    <div class="page-header text-center">
+	        <h1><span class="glyphicon glyphicon-eye-open"></span> Admin Panel</h1>
+	    </div>
+	    <% include partials/navigation %>
+	    <div>
+	    	<ul class="nav nav-tabs">
+			  	<li role="presentation" class="active"><a ng-click="showCategoryView()">Category</a></li>
+			  	<li role="presentation"><a href="#" ng-click="showCategoryRegister()">Register</a></li>
+
+			</ul>
+	    </div>
+		<div ng-show="showCategories">
+			<h2>Available Categories</h2>
+			<table class="table table-hover">
+				<thead>
+			        <tr>
+			            <th ng-click="orderFunction('name')">Name</th>
+			            <th ng-click="orderFunction('description')">Description</th>
+			        </tr>
+	    		</thead>
+				<tr ng-repeat="(key,value) in categories|orderBy:order" ng-click="showCategoryEdit(key)">
+					<td>{{value.name}}</td>
+					<td>{{value.description}}</td>
+				</tr>
+			</table>
+		</div>
+		<div ng-show="showRegister">
+			<h2>Category {{heading}}</h2>
+			<form class="form-horizontal">
+			<fieldset>
+
+			<!-- Form Name -->
+			<legend>Register a category</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="name">Name</label>  
+			  <div class="col-md-4">
+			  <input ng-model="category.name" id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="">
+			    
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="description">Description</label>  
+			  <div class="col-md-4">
+			  <input ng-model="category.description" id="description" name="description" type="text" placeholder="Description" class="form-control input-md">
+			    
+			  </div>
+			</div>
+
+			<!-- Button (Double) -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="register"></label>
+			  <div class="col-md-8">
+			    <button ng-show="registerButton" id="register" name="register" class="btn btn-success" ng-click="registerCategory()">Register</button>
+			    <button ng-show="editButton" id="update" name="update" class="btn btn-success" ng-click="updateCategory()">Update</button>
+			    <button id="delete" name="delete" class="btn btn-warning" ng-click="deleteCategory()">Delete</button>
+			    <button id="cancel" name="cancel" class="btn btn-danger" ng-click="showCategoryView()">Cancel</button>
+			  </div>
+			  </div>
+			</div>
+
+			</fieldset>
+			</form>
+		</div>
+
+	<% include partials/footer %>
+</body>
+</html>

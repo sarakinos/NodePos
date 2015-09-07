@@ -8,7 +8,7 @@ var productSchema = new Schema({
 	price       : String,
 	ingredients : String,
 	created_at  : Date,
-    updated_at  : Date
+  updated_at  : Date
 });
 
 productSchema.pre('save', function(next) {

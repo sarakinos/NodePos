@@ -22,24 +22,24 @@
 			<table class="table table-hover">
 				<thead>
 			        <tr>
-			            <th>Name</th>
-			            <th>Description</th>
-			            <th>Price</th>
-			            <th>Category</th>
-			            <th>Ingredients</th>
+			            <th ng-click="orderFunction('name')">Name</th>
+			            <th ng-click="orderFunction('description')">Description</th>
+			            <th ng-click="orderFunction('price')">Price</th>
+			            <th ng-click="orderFunction('category')">Category</th>
+			            <th ng-click="orderFunction('ingredients')">Ingredients</th>
 			        </tr>
 	    		</thead>
-				<tr ng-repeat="(key,value) in products">
+				<tr ng-repeat="(key,value) in products | orderBy:order" ng-click="showProductEdit(key)">
 					<td>{{value.name}}</td>
 					<td>{{value.description}}</td>
 					<td>{{value.price}}</td>
-					<td>{{value.category}}</td>
+					<td>{{getCategoryObject(value.category).name}}</td>
 					<td>{{value.ingredients}}</td>
 				</tr>
 			</table>
 		</div>
 		<div ng-show="showRegister">
-			<h2>Product Registration</h2>
+			<h2>Product {{heading}}</h2>
 			<form class="form-horizontal">
 			<fieldset>
 
@@ -72,23 +72,36 @@
 			  </div>
 			</div>
 
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="price">Price</label>  
+			  <div class="col-md-4">
+			  <input ng-model="product.price" id="price" name="price" type="text" placeholder="Price" class="form-control input-md">
+			    
+			  </div>
+			</div>
+
 			<!-- Select Basic -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="category">Category</label>
 			  <div class="col-md-4">
-			    <select ng-model="product.category" id="category" name="category" class="form-control">
+			    <!-- <select ng-model="product.category" id="category" name="category" class="form-control">
 			      <option value="1">Option one</option>
 			      <option value="2">Option two</option>
-			    </select>
+			    </select> -->
+			    <select name="category" id="category"
+			      ng-options="option.name for option in categories track by option._id"
+			      ng-model="product.category"></select>
 			  </div>
 			</div>
-
 			<!-- Button (Double) -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="register"></label>
 			  <div class="col-md-8">
-			    <button id="register" name="register" class="btn btn-success" ng-click="registerProduct()">Register</button>
+			    <button ng-show="registerButton" id="register" name="register" class="btn btn-success" ng-click="registerProduct()">Register</button>
+			    <button ng-show="editButton" id="update" name="update" class="btn btn-success" ng-click="updateProduct()">Update</button>
+			    <button id="delete" name="delete" class="btn btn-warning" ng-click="deleteProduct()">Delete</button>
 			    <button id="cancel" name="cancel" class="btn btn-danger" ng-click="showProductView()">Cancel</button>
+			  </div>
 			  </div>
 			</div>
 
