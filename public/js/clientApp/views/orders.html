@@ -1,0 +1,13 @@
+<div>Orders</div>
+<button class="btn btn-infod">Add order</button>
+	<div ng-show="showOrderAdd">
+		<form novalidate>
+			products_id : <input type="text" ng-model="order.p_id"/>
+			price : <input type="text" ng-model="order.price"/>
+			table : <input type="text" ng-model="order.table"/>
+			additional_info : <input type="text" ng-model="order.info"/>
+			<button class="btn btn-success" ng-click="addOrder()">Add</button>
+		</form>
+
+	</div>
+

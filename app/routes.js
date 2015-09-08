@@ -93,7 +93,7 @@ module.exports = function(app, passport) {
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
-
+    console.log(req.isAuthenticated());
     // if user is authenticated in the session, carry on 
     if (req.isAuthenticated())
         return next();

@@ -2,46 +2,26 @@
 <!doctype html>
 <html>
 <head>
+
     <% include partials/head %>
-</head>
-<body>
 
 <script>
-  var socket = io.connect('http://localhost:8080');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
+    var user = {
+        id       : "<%= user._id  %>",
+        username : "<%= user.local.username  %>"
+    }
 </script>
 
-<div class="container-fluid">
-
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Users Profile</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+</head>
+<body ng-app="clientApp" >
+<div class="container-fluid" ng-controller="HomeController">
+    <div class="jumbotron text-center">
+        <h2>You are connected as:{{user.username}}</h2>
     </div>
-
-    <div class="row">
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-12">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Users info</h3>
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>firstname</strong>: <%= user.local.firstname %>
-                        <strong>surname</strong>: <%= user.local.surname %>
-                        <strong>addr</strong>: <%= user.local.addr %>
-                        <strong>afm</strong>: <%= user.local.afm %>
-                        <strong>am</strong>: <%= user.local.am %>
-                        <strong>admin</strong>: <%= user.local.admin %>                      
-                    </p>
-            </div>
-        </div>
-
-    </div>
-
+    <% include partials/clientNavigation %>
+    <div ng-view></div>
 </div>
 <% include partials/footer %>
+
 </body>
 </html>

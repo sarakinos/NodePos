@@ -4,8 +4,8 @@
 <head>
     <% include partials/head %>
 </head>
-<body>
-<div class="container">
+<body ng-app='angularApp'>
+<div class="container" ng-controller="HomeController">
 
     <div class="page-header text-center">
         <h1><span class="glyphicon glyphicon-eye-open"></span> Admin Panel</h1>
@@ -20,14 +20,8 @@
             <div class="well">
                 <h3><span class="glyphicon glyphicon-globe"></span>Waiters Connected</h3>
                     <ul class='list-group'>
-                        <li class="list-group-item"><button class="btn btn-primary" type="button">
-                          Bampis <span class="badge">4</span>
-                        </button></li>
-                        <li class="list-group-item"><button class="btn btn-primary" type="button">
-                          Xrysa <span class="badge">4</span>
-                        </button></li>
-                        <li class="list-group-item"><button class="btn btn-primary" type="button">
-                          Tasos <span class="badge">4</span>
+                        <li class="list-group-item"><button class="btn btn-primary" type="button" ng-repeat="(key, value) in clients track by $index">
+                          {{value}} <span class="badge">4</span>
                         </button></li>
                     </ul>
             </div>

@@ -2,8 +2,12 @@
 
 // set up ======================================================================
 // get all the tools we need
+// var express  = require('express');
+// var app      = express();
 var express  = require('express');
 var app      = express();
+var http 	 = require('http').Server(app);
+var io       = require('socket.io')(http);
 var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -45,13 +49,17 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// routes ======================================================================
+
+// routes   ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 require('./app/restFull/productService.js')(app);
 require('./app/restFull/userService.js')(app);
 require('./app/restFull/categoryService.js')(app);
-// launch ======================================================================
-app.listen(port);
+require('./app/restFull/orderService.js')(app,io);
+// socketio ======================================================================
+
+// launch   ======================================================================
+http.listen(port);
 console.log('The magic happens on port ' + port);
 
 
